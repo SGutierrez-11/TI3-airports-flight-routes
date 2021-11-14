@@ -1,16 +1,31 @@
 package collections;
 
+import java.util.PriorityQueue;
+
 public class WeightedGraph<T> {
 		
 		//private int vertex;
 		
 		private LinkedList<Edge<T>> adjancencyList;
 		
-		public WeightedGraph() {
+		private PriorityQueue<Vertex<T>> queue;
+		
+		private Vertex<T>[] vertexList;
+		
+		private int vertex;
+		
+		public WeightedGraph(int vertex) {
 			
 			//this.vertex = vertex;
 			
 			adjancencyList = new LinkedList<Edge<T>>();
+			
+			this.vertex = vertex;
+			
+			queue = new PriorityQueue<Vertex<T>>(vertex);
+			
+			vertexList = new Vertex[vertex];
+			
 		}
 		/*
 		 static class Graph {
@@ -57,4 +72,29 @@ public class WeightedGraph<T> {
 		 }
 		}
 		 */
+
+		public LinkedList<Edge<T>> getAdjancencyList() {
+			return adjancencyList;
+		}
+
+		public void setAdjancencyList(LinkedList<Edge<T>> adjancencyList) {
+			this.adjancencyList = adjancencyList;
+		}
+
+		public PriorityQueue<Vertex<T>> getQueue() {
+			return queue;
+		}
+
+		public void setQueue(PriorityQueue<Vertex<T>> queue) {
+			this.queue = queue;
+		}
+
+		public int getVertex() {
+			return vertex;
+		}
+
+		public void setVertex(int vertex) {
+			this.vertex = vertex;
+		}
+		
 }
