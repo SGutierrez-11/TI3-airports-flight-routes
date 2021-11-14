@@ -3,12 +3,12 @@ package collections;
 public class Edge<T> {
 	
 	
-		 T source;
-		 T destination;
+		 Vertex<T> source;
+		 Vertex<T> destination;
 		 int weight;
 		 boolean doubleDirected;
 
-		 public Edge(T source, T destination, int weight, boolean doubleDirected) {
+		 public Edge(Vertex<T> source, Vertex<T> destination, int weight, boolean doubleDirected) {
 		 this.source = source;
 		 this.destination = destination;
 		 this.weight = weight;

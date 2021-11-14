@@ -8,7 +8,7 @@ public class Vertex<T>{
 	
 	private LinkedList<Edge<T>> edgesList; 
 	
-	private int distance;
+	//private int distance;
 	
 	private String color;
 	
@@ -17,7 +17,7 @@ public class Vertex<T>{
 		this.setElement(element);
 		this.setIdentificator(identificator);
 		setEdgesList(new LinkedList<Edge<T>>());
-		setDistance(Integer.MAX_VALUE);
+		//setDistance(Integer.MAX_VALUE);
 		setColor("");
 	}
 
@@ -37,6 +37,7 @@ public class Vertex<T>{
 		this.identificator = identificator;
 	}
 
+	/*
 	public int getDistance() {
 		return distance;
 	}
@@ -44,7 +45,7 @@ public class Vertex<T>{
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}
-
+	*/
 	public LinkedList<Edge<T>> getEdgesList() {
 		return edgesList;
 	}
