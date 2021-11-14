@@ -1,24 +1,21 @@
 package collections;
 
-import java.util.LinkedList;
-
-public class WeightedGraph {
-	
-	static class Edge {
-		 int source;
-		 int destination;
-		 int weight;
-
-		 public Edge(int source, int destination, int weight) {
-		 this.source = source;
-		 this.destination = destination;
-		 this.weight = weight;
-		 }
-		 }
-
+public class WeightedGraph<T> {
+		
+		//private int vertex;
+		
+		private LinkedList<Edge<T>> adjancencyList;
+		
+		public WeightedGraph() {
+			
+			//this.vertex = vertex;
+			
+			adjancencyList = new LinkedList<Edge<T>>();
+		}
+		/*
 		 static class Graph {
 		 int vertices;
-		 LinkedList<Edge> [] adjacencylist;
+		 collections.LinkedList<T>
 
 		 Graph(int vertices) {
 		 this.vertices = vertices;
@@ -59,4 +56,5 @@ public class WeightedGraph {
 		 graph.printGraph();
 		 }
 		}
-
+		 */
+}
