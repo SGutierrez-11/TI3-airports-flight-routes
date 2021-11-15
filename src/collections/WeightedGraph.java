@@ -8,7 +8,7 @@ public class WeightedGraph<T> {
 		
 		private LinkedList<Edge<T>> adjancencyList;
 		
-		private PriorityQueue<Vertex<T>> queue;
+		//private PriorityQueue<Vertex<T>> queue;
 		
 		private Vertex<T>[] vertexList;
 		
@@ -22,7 +22,7 @@ public class WeightedGraph<T> {
 			
 			this.vertex = vertex;
 			
-			queue = new PriorityQueue<Vertex<T>>(vertex);
+			//queue = new PriorityQueue<Vertex<T>>(vertex);
 			
 			vertexList = new Vertex[vertex];
 			
@@ -67,7 +67,7 @@ public class WeightedGraph<T> {
 			if(originVertex==null||destinationVertex==null) {
 				
 			}else {
-			Edge<T> tmpEdge = new Edge(originVertex, destinationVertex, weight, twoDirection);
+			Edge<T> tmpEdge = new Edge<T>(originVertex, destinationVertex, weight, twoDirection);
 			LinkedList<Edge<T>> next = new LinkedList<Edge<T>>(tmpEdge);
 			adjancencyList.setNext(next);
 			}
@@ -185,14 +185,15 @@ public class WeightedGraph<T> {
 			this.adjancencyList = adjancencyList;
 		}
 
+		/*
 		public PriorityQueue<Vertex<T>> getQueue() {
 			return queue;
 		}
 
-		public void setQueue(PriorityQueue<Vertex<T>> queue) {
+		public void setQueue(PriorityQueue<Vertex<T>> queue) {;adi
 			this.queue = queue;
 		}
-
+*/
 		public int getVertex() {
 			return vertex;
 		}
