@@ -12,6 +12,7 @@ public class WeightedGraph<T> {
 		
 		private Vertex<T>[] vertexList;
 		
+
 		private int vertex;
 		
 		public WeightedGraph(int vertex) {
@@ -200,6 +201,10 @@ public class WeightedGraph<T> {
 
 		public void setVertex(int vertex) {
 			this.vertex = vertex;
+		}
+		
+		public Vertex<T>[] getVertexList() {
+			return vertexList;
 		}
 		
 }
