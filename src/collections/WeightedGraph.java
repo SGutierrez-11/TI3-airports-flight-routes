@@ -15,6 +15,7 @@ public class WeightedGraph<T> {
 		
 		private Vertex<T>[] vertexList;
 		
+
 		private int vertex;
 		
 		public WeightedGraph(int vertex) {
@@ -175,7 +176,7 @@ public class WeightedGraph<T> {
 
 
 
-		public String BFS(Vertex<T> element) {
+		public void BFS(Vertex<T> element) {
 
 			for(int i=0; i < vertexList.length;i++){
 
@@ -202,5 +203,4 @@ public class WeightedGraph<T> {
 			}
 
 		}
-		}
-}
+
