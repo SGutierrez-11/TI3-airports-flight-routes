@@ -15,7 +15,7 @@ public class WeightedGraph<T> {
 		
 		private Vertex<T>[] vertexList;
 		
-
+		private int time = 0;
 		private int vertex;
 		
 		public WeightedGraph(int vertex) {
@@ -208,6 +208,38 @@ public class WeightedGraph<T> {
 				}
 
 			}
+		public void DFS(){
+
+			for (Vertex<T> u:vertexList) {
+				u.setColor("WHITE");
+				u.setPredescesor(null);
+			}
+			time = 0;
+			for (Vertex<T> u:vertexList) {
+
+				if(u.getColor().equals("WHITE")){
+					DFS_VISIT(u);
+
+				}
+
+			}
+
+		}
+		public void DFS_VISIT(Vertex<T> u){
+			time = time+1;
+			u.setDistance(time);
+			u.setColor("GRAY");
+			for (Vertex<T>v:vertexList) {
+				if(v.getColor().equals("WHITE")){
+					v.setPredescesor(u);
+					DFS_VISIT(v);
+				}
+
+			}
+			u.setColor("BLACK");
+			time = time+1;
+			u.setF(time);
+		}
 
 		}
 

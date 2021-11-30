@@ -6,18 +6,17 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 	
 	private T value;
 
-	int size;
+
 
 	public LinkedList() {
 
-		size = 0;
 	}
 	
 	
 	public LinkedList(T value) {
 		this.value = value;
 
-		size = 1;
+		
 	}
 	
 	@Override
@@ -48,16 +47,4 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 		}
 	}
 
-	public int getSize(){
-
-		LinkedList<T>next = getNext();
-		while(next!=null){
-
-			size++;
-			next = next.getNext();
-		}
-
-
-	}
-	
 }

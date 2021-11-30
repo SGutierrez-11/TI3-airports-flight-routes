@@ -19,6 +19,8 @@ public class Vertex<T> {
 
 	private Vertex<T> predescesor;
 
+	private int f;
+
 	public Vertex(T element, int identificator) {
 
 		this.setElement(element);
@@ -90,4 +92,11 @@ public class Vertex<T> {
 		return predescesor;
 	}
 
+	public int getF() {
+		return f;
+	}
+
+	public void setF(int f) {
+		this.f = f;
+	}
 }
