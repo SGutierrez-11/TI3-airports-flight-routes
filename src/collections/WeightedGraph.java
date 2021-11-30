@@ -9,7 +9,7 @@ public class WeightedGraph<T> {
 		//private int vertex;
 		
 		private LinkedList<Edge<T>> adjancencyList;
-		private List<Edge<T>> adjacency;
+		//private List<Vertex<T>> adjacency;
 
 		//private PriorityQueue<Vertex<T>> queue;
 		
@@ -30,7 +30,7 @@ public class WeightedGraph<T> {
 			
 			vertexList = new Vertex[vertex];
 
-			adjacency = new ArrayList<Edge<T>>();
+			//adjacency = new ArrayList<Vertex<T>>();
 			
 		}
 		public void addVertex(T element) {
@@ -76,7 +76,7 @@ public class WeightedGraph<T> {
 			Edge<T> tmpEdge = new Edge<T>(originVertex, destinationVertex, weight, twoDirection);
 			LinkedList<Edge<T>> next = new LinkedList<Edge<T>>(tmpEdge);
 			adjancencyList.setNext(next);
-			adjacency.add(tmpEdge);
+			//adjacency.add(tmpEdge);
 			}
 			
 		}
@@ -144,7 +144,7 @@ public class WeightedGraph<T> {
 
 			return adjancencyList;
 		}
-
+/*
 	public List<Edge<T>> getAdjacency() {
 		return adjacency;
 	}
@@ -157,15 +157,15 @@ public class WeightedGraph<T> {
 			this.adjancencyList = adjancencyList;
 		}
 
-		/*
+
 		public PriorityQueue<Vertex<T>> getQueue() {
 			return queue;
 		}
 
-		public void setQueue(PriorityQueue<Vertex<T>> queue) {;adi
+		public void setQueue(PriorityQueue<Vertex<T>> queue) {
 			this.queue = queue;
 		}
-*/
+		*/
 		public int getVertex() {
 			return vertex;
 		}
@@ -198,8 +198,15 @@ public class WeightedGraph<T> {
 
 				Vertex<T> u = queue.remove();
 
-					
+				for (Vertex<T>v:vertexList) {
+					v.setColor("GRAY");
+					v.setDistance(u.getDistance()+1);
+					v.setPredescesor(u);
+					queue.add(v);
 				}
+				u.setColor("BLACK");
+				}
+
 			}
 
 		}
