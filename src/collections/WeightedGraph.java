@@ -253,6 +253,13 @@ public class WeightedGraph<T> {
 					v.setPredescesor(null);
 
 					q.add(v);
+
+					while(q.isEmpty()==false){
+
+						Vertex<T> u = q.remove();
+						
+
+					}
 				}
 			}
 
