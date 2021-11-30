@@ -80,6 +80,7 @@ public class WeightedGraph<T> {
 			}
 			
 		}
+
 		public int[][] minimunDistancesList() {
 			
 			int [][] matrix = new int[vertex][vertex];
@@ -175,7 +176,6 @@ public class WeightedGraph<T> {
 		}
 
 
-
 		public void BFS(Vertex<T> element) {
 
 			for(int i=0; i < vertexList.length;i++){
@@ -257,7 +257,7 @@ public class WeightedGraph<T> {
 					while(q.isEmpty()==false){
 
 						Vertex<T> u = q.remove();
-						
+
 
 					}
 				}
@@ -265,6 +265,24 @@ public class WeightedGraph<T> {
 
 		}
 
+	public void setAdjancencyList(LinkedList<Edge<T>> adjancencyList) {
+		this.adjancencyList = adjancencyList;
+	}
 
-		}
+	public Vertex<T>[] getVertexList() {
+		return vertexList;
+	}
+
+	public void setVertexList(Vertex<T>[] vertexList) {
+		this.vertexList = vertexList;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+}
 
