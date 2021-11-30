@@ -1,5 +1,7 @@
 package collections;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class WeightedGraph<T> {
@@ -7,7 +9,8 @@ public class WeightedGraph<T> {
 		//private int vertex;
 		
 		private LinkedList<Edge<T>> adjancencyList;
-		
+		private List<Edge<T>> adjacency;
+
 		//private PriorityQueue<Vertex<T>> queue;
 		
 		private Vertex<T>[] vertexList;
@@ -25,6 +28,8 @@ public class WeightedGraph<T> {
 			//queue = new PriorityQueue<Vertex<T>>(vertex);
 			
 			vertexList = new Vertex[vertex];
+
+			adjacency = new ArrayList<Edge<T>>();
 			
 		}
 		public void addVertex(T element) {
@@ -70,6 +75,7 @@ public class WeightedGraph<T> {
 			Edge<T> tmpEdge = new Edge<T>(originVertex, destinationVertex, weight, twoDirection);
 			LinkedList<Edge<T>> next = new LinkedList<Edge<T>>(tmpEdge);
 			adjancencyList.setNext(next);
+			adjacency.add(tmpEdge);
 			}
 			
 		}
@@ -80,6 +86,7 @@ public class WeightedGraph<T> {
 			int [][] minDistances = new int[vertex][vertex];
 			
 			LinkedList<Edge<T>> tmp = adjancencyList;
+
 			
 			while(tmp!=null) {
 				
@@ -131,57 +138,21 @@ public class WeightedGraph<T> {
 			
 			return minDistances;
 		}
-		/*
-		 static class Graph {
-		 int vertices;
-		 collections.LinkedList<T>
-
-		 Graph(int vertices) {
-		 this.vertices = vertices;
-		 adjacencylist = new LinkedList[vertices];
-		 //initialize adjacency lists for all the vertices
-		 for (int i = 0; i <vertices ; i++) {
-		 adjacencylist[i] = new LinkedList<>();
-		 }
-		 }
-
-		 public void addEgde(int source, int destination, int weight) {
-		 Edge edge = new Edge(source, destination, weight);
-		 adjacencylist[source].addFirst(edge); //for directed graph
-		 }
-
-		 public void printGraph(){
-		 for (int i = 0; i <vertices ; i++) {
-		 LinkedList<Edge> list = adjacencylist[i];
-		 for (int j = 0; j <list.size() ; j++) {
-		 System.out.println("vertex-" + i + " is connected to " +
-		 list.get(j).destination + " with weight " + list.get(j).weight);
-		 }
-		 }
-		 }
-		 }
-		 public static void main(String[] args) {
-		 int vertices = 6;
-		 Graph graph = new Graph(vertices);
-		 graph.addEgde(0, 1, 4);
-		 graph.addEgde(0, 2, 3);
-		 graph.addEgde(1, 3, 2);
-		 graph.addEgde(1, 2, 5);
-		 graph.addEgde(2, 3, 7);
-		 graph.addEgde(3, 4, 2);
-		 graph.addEgde(4, 0, 4);
-		 graph.addEgde(4, 1, 4);
-		 graph.addEgde(4, 5, 6);
-		 graph.printGraph();
-		 }
-		}
-		 */
 
 		public LinkedList<Edge<T>> getAdjancencyList() {
+
 			return adjancencyList;
 		}
 
-		public void setAdjancencyList(LinkedList<Edge<T>> adjancencyList) {
+	public List<Edge<T>> getAdjacency() {
+		return adjacency;
+	}
+
+	public void setAdjacency(List<Edge<T>> adjacency) {
+		this.adjacency = adjacency;
+	}
+
+	public void setAdjancencyList(LinkedList<Edge<T>> adjancencyList) {
 			this.adjancencyList = adjancencyList;
 		}
 
@@ -201,5 +172,35 @@ public class WeightedGraph<T> {
 		public void setVertex(int vertex) {
 			this.vertex = vertex;
 		}
-		
+
+
+
+		public String BFS(Vertex<T> element) {
+
+			for(int i=0; i < vertexList.length;i++){
+
+				if (vertexList[i] == element) {
+
+				} else {
+
+					vertexList[i].setColor("WHITE");
+					vertexList[i].setDistance(Integer.MAX_VALUE);
+					vertexList[i].setPredescesor(null);
+				}
+			}
+			element.setColor("GRAY");
+			element.setDistance(0);
+			element.setPredescesor(null);
+			Queue<Vertex<T>> queue = new Queue<Vertex<T>>();
+			queue.add(element);
+			while (queue.isEmpty()==false){
+
+				Vertex<T> u = queue.remove();
+
+					
+				}
+			}
+
+		}
+		}
 }
