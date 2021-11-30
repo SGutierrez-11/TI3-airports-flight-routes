@@ -240,6 +240,24 @@ public class WeightedGraph<T> {
 			time = time+1;
 			u.setF(time);
 		}
+		public void Dijkstra(Vertex<T> source){
+
+			source.setDistance(0);
+
+			PriorityQueue<Vertex<T>> q = new PriorityQueue<Vertex<T>>();
+
+			for (Vertex<T> v:vertexList) {
+
+				if(v!=source){
+					v.setDistance(Integer.MAX_VALUE);
+					v.setPredescesor(null);
+
+					q.add(v);
+				}
+			}
+
+		}
+
 
 		}
 

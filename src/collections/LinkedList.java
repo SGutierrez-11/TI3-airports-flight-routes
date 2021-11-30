@@ -16,7 +16,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 	public LinkedList(T value) {
 		this.value = value;
 
-		
+
 	}
 	
 	@Override
