@@ -9,6 +9,8 @@ public class Vertex<T> {
 	private T element;
 
 	private int identificator;
+	
+	private Vertex<T>[] adjan;
 
 	private LinkedList<Edge<T>> edgesList;
 
@@ -22,7 +24,7 @@ public class Vertex<T> {
 
 	private int f;
 
-	public Vertex(T element, int identificator) {
+	public Vertex(T element, int identificator, int maxSize) {
 
 		this.setElement(element);
 		this.setIdentificator(identificator);
@@ -31,6 +33,7 @@ public class Vertex<T> {
 		color = "";
 		predescesor = null;
 		//edgesList = new ArrayList<Edge<T>>();
+		adjan = new Vertex[maxSize];
 	}
 
 	public T getElement() {
@@ -100,4 +103,34 @@ public class Vertex<T> {
 	public void setF(int f) {
 		this.f = f;
 	}
+
+	public void addAdjVert(Vertex<T> element) {
+		
+		
+		boolean out = false;
+		for(int i=0; i < adjan.length && out==false;i++) {
+			
+			if(adjan[i]==null) {
+				
+				adjan[i] = element;
+				out = true;
+				
+			}
+			
+			
+		}
+		
+		
+	}
+	
+	
+	
+	public Vertex<T>[] getAdjan() {
+		return adjan;
+	}
+
+	public void setAdjan(Vertex<T>[] adjan) {
+		this.adjan = adjan;
+	}
+	
 }
