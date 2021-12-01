@@ -51,6 +51,24 @@ public class WeightedGraph<T> {
 			
 			
 		}
+		public int getVertexPos(T element) {
+			
+			int pos = 0;
+			boolean out = false;
+			for(int i=0; i < vertex && out==false;i++) {
+				
+				if(vertexList[i].getElement().equals(element)) {
+					
+					pos = i;
+					out = true;
+				}
+				
+				
+			}
+			return pos;
+			
+		}
+		
 		public void addEdge(int origin, int destination, int weight, boolean twoDirection) {
 		
 			Vertex<T> originVertex = null;
