@@ -203,6 +203,7 @@ public class WeightedGraph<T> {
 					v.setDistance(u.getDistance()+1);
 					v.setPredescesor(u);
 					queue.add(v);
+
 				}
 				u.setColor("BLACK");
 				}
