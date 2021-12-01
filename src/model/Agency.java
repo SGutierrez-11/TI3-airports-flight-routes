@@ -10,6 +10,8 @@ public class Agency {
 	
 	private WeightedGraph<String> travel;
 	
+	//private WeightedGraph<String> returnTravel;
+	
 	String [] cityOrder;
 	
 	public Agency() {
@@ -60,7 +62,7 @@ public class Agency {
 		
 	}
 	
-	public void findBestWay(String origin, String destiny) {
+	public String findBestWay(String origin, String destiny) {
 	
 		
 		int[][] minimunDistances = travel.minimunDistancesList();
@@ -88,10 +90,12 @@ public class Agency {
 			}
 			
 		}
-		System.out.println("El Precio Minimo entre: " + origin + "-" + destiny + " Con Origen en " + origin + " Y Destino en " + destiny + " Es" + minimunDistances[x][y]);
-		
+		String text = "El Precio Minimo entre: " + origin + "-" + destiny + " Con Origen en " + origin + " Y Destino en " + destiny + " Es" + minimunDistances[x][y];
+		return text;
 		
 	}
+	
+	
 	
 	
 }

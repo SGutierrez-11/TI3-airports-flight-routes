@@ -98,7 +98,7 @@ public class WeightedGraph<T> {
 			LinkedListOwn<Edge<T>> next = new LinkedListOwn<Edge<T>>(tmpEdge);
 			
 			originVertex.addAdjVert(destinationVertex);
-			destinationVertex.addAdjVert(originVertex);
+			//destinationVertex.addAdjVert(originVertex);
 			
 			adjancencyList.setNext(next);
 			//adjacency.add(tmpEdge);
