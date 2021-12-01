@@ -1,6 +1,6 @@
 package collections;
 
-public interface LinkedListInterface<T> {
+public interface LinkedListInterfaceOwn<T> {
 
 	T getObject();
 	
