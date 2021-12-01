@@ -32,14 +32,13 @@ public class LinkedListOwn<T> implements LinkedListInterfaceOwn<T> {
 	}
 
 	
-	public void setNext(LinkedListOwn<T> next) {
-		if(value==null) {
-		
-			value = next.getObject();
-		}else {
-		this.next = next;
+	public void setNext(LinkedListOwn<T> next2) {
+			
+			if(next!=null) {
+				next.setNext(next2);
+			}else {
+			this.next = next2;
+			}	
 		}
-	}
-
 	
-}
+	}
