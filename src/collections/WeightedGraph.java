@@ -227,13 +227,14 @@ public class WeightedGraph<T> {
 			while (queue.isEmpty()==false){
 
 				Vertex<T> u = queue.remove();
-
+				
 				for (Vertex<T>v:u.getAdjan()) {
-					v.setColor("GRAY");
-					v.setDistance(u.getDistance()+1);
-					v.setPredescesor(u);
-					queue.add(v);
-
+					if(v!=null) {
+						v.setColor("GRAY");
+						v.setDistance(u.getDistance()+1);
+						v.setPredescesor(u);
+						queue.add(v);
+					}
 				}
 				u.setColor("BLACK");
 				}
