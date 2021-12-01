@@ -1,5 +1,6 @@
 package collections;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -13,11 +14,11 @@ public class WeightedGraphTest {
 	}
 	
 	public void setupStage2() {
-		graph = new WeightedGraph<Integer>(5);
+		graph = new WeightedGraph<>(5);
 	}
 	
 	public void setupStage3() {
-		graph = new WeightedGraph<Integer>(3);
+		graph = new WeightedGraph<>(3);
 	}
 	
 	@Test
@@ -82,9 +83,9 @@ public class WeightedGraphTest {
 		
 		gp.addVertex(1);
 		gp.addVertex(2);
-		gp.addEdge(1, 0, 0, true);
+		gp.addEdge(1, 2, 3, true);
 		
-		assertEquals(gp.getAdjancencyList().getObject().getWeight(), 0);
+		assertEquals(gp.getAdjancencyList().getObject().getWeight(), 3);
 		
 	}
 	
@@ -121,7 +122,7 @@ public class WeightedGraphTest {
 		
 		
 		assertEquals(graph.getAdjancencyList().getObject().getWeight(), 4);
-		assertEquals(graph.getAdjancencyList().getNext().getObject().getWeight(), 2);
+		assertEquals(graph.getAdjancencyList().getNext().getObject().getWeight(), 8);
 		assertEquals(graph.getAdjancencyList().getNext().getNext().getObject().getWeight(), 3);
 		assertEquals(graph.getAdjancencyList().getNext().getNext().getNext().getObject().getWeight(),2);
 	}
@@ -145,9 +146,7 @@ public class WeightedGraphTest {
 		
 		int[][] matrix = {{0,4,2},{5,0,3},{6,7,0}};
 		
-		
-		
-		assertEquals(graph.minimunDistancesList(), matrix);
+		assertArrayEquals(graph.minimunDistancesList(),matrix);
 		
 	}
 	
@@ -169,6 +168,28 @@ public class WeightedGraphTest {
 		graph.BFS(graph.getVertexList()[1]);
 		
 		assertEquals(graph.getVertexList()[1].getColor(), "BLACK");
+	}
+	
+	@Test
+	public void BFStest2() {
+		setupStage2();
+	
+		
+		graph.addVertex(1);
+		graph.addVertex(2);
+		graph.addVertex(3);
+		graph.addVertex(4);
+		graph.addVertex(5);
+		graph.addEdge(1, 2, 2, true);
+		graph.addEdge(2, 3, 2, true);
+		graph.addEdge(3, 4, 2, true);
+		graph.addEdge(4, 5, 2, true);
+		
+		graph.BFS(graph.getVertexList()[1]);
+		
+		assertEquals(graph.getVertexList()[3].getColor(), "BLACK");
+		assertEquals(graph.getVertexList()[1].getColor(), "BLACK");
+		assertEquals(graph.getVertexList()[2].getColor(), "BLACK");
 	}
 	
 	
