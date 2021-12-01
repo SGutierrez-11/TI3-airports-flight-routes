@@ -68,14 +68,9 @@ public class MainGUI {
 				    String toShow = agency.findBestWay(origin, destity);
 				   // System.out.println(toShow);
 				    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("results.fxml"));
- 					fxmlLoader.setController(this);
- 					Parent root = fxmlLoader.load();
- 					Scene scene = new Scene(root);
- 			    	Stage stage = new Stage();
- 			    	stage.initModality(Modality.WINDOW_MODAL);
- 			    	stage.initOwner(mainPane.getScene().getWindow());
- 			    	stage.setScene(scene);
- 			    	stage.show();
+				    fxmlLoader.setController(this);
+			    	Parent menuPane = fxmlLoader.load();
+			    	mainPane.getChildren().setAll(menuPane); 
 				    txtResult.setText(toShow);
  			    	
 			} catch (IOException e) {
@@ -161,14 +156,10 @@ public class MainGUI {
     }
     	int toShow = toShow1 + toShow2;
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("results.fxml"));
-			fxmlLoader.setController(this);
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-	    	Stage stage = new Stage();
-	    	stage.initModality(Modality.WINDOW_MODAL);
-	    	stage.initOwner(mainPane.getScene().getWindow());
-	    	stage.setScene(scene);
-	    	stage.show();
+    	//FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPaneV2.fxml"));
+		fxmlLoader.setController(this);
+    	Parent menuPane = fxmlLoader.load();
+    	mainPane.getChildren().setAll(menuPane); 	
 	    	String finalToShow = "El mejor precio para ir y volver desde " + txtOrigin.getText() + " a " + txtDestination.getText() + " es de: " + toShow;   
     	txtResult.setText(finalToShow);
     	
