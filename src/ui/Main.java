@@ -13,7 +13,7 @@ public class Main extends Application{
 	}
 	public static void main(String[]args) {
 			launch(args);
-	}	
+	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-pane.fxml"));
