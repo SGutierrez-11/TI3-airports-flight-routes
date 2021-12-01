@@ -54,7 +54,9 @@ public class MainGUI {
     	File file = fileChooser.showOpenDialog(null);
     	if(file != null) {
     		try {
+    			 //System.out.println(" Comienza");
 				 agency.importData(file.getAbsolutePath());
+				 System.out.println("De aqui pasa");
 				 Alert alert = new Alert(AlertType.INFORMATION);
 				    alert.setTitle("Flight-Routes");
 				    alert.setHeaderText("Annoucement");
@@ -64,9 +66,18 @@ public class MainGUI {
 				    String origin = txtOrigin.getText();
 				    String destity = txtDestination.getText();
 				    String toShow = agency.findBestWay(origin, destity);
-				    
-				    
-				    //playerTable.refresh();
+				   // System.out.println(toShow);
+				    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("results.fxml"));
+ 					fxmlLoader.setController(this);
+ 					Parent root = fxmlLoader.load();
+ 					Scene scene = new Scene(root);
+ 			    	Stage stage = new Stage();
+ 			    	stage.initModality(Modality.WINDOW_MODAL);
+ 			    	stage.initOwner(mainPane.getScene().getWindow());
+ 			    	stage.setScene(scene);
+ 			    	stage.show();
+				    txtResult.setText(toShow);
+ 			    	
 			} catch (IOException e) {
 				 Alert alert = new Alert(AlertType.INFORMATION);
 				    alert.setTitle("FIBA");
@@ -84,9 +95,9 @@ public class MainGUI {
     @FXML
     void calculateRoundTrip(ActionEvent event) throws IOException {
     	
-    	String toShow1 = " ";
+    	int toShow1 = 0;
 
-    	String toShow2 = " ";
+    	int toShow2 = 0;
     	
 		FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
@@ -102,17 +113,8 @@ public class MainGUI {
 				    alert.showAndWait();
 				    String origin = txtOrigin.getText();
 				    String destity = txtDestination.getText();
-				    toShow1 = agency.findBestWay(origin, destity);
-			    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("results.fxml"));
-					fxmlLoader.setController(this);
-					Parent root = fxmlLoader.load();
-					Scene scene = new Scene(root);
-			    	Stage stage = new Stage();
-			    	stage.initModality(Modality.WINDOW_MODAL);
-			    	stage.initOwner(mainPane.getScene().getWindow());
-			    	stage.setScene(scene);
-			    	stage.show();
-			    	txtResult.setText(toShow1);
+				    toShow1 = agency.findBestWayReturn(origin, destity);
+				    
 				    
 				    
 				    //playerTable.refresh();
@@ -124,7 +126,7 @@ public class MainGUI {
 				
 				    alert.showAndWait();
 			}
-	  
+    		
 	 
     }
     	FileChooser fileChooser2 = new FileChooser();
@@ -141,7 +143,7 @@ public class MainGUI {
 				    alert.showAndWait();
 				    String origin = txtOrigin.getText();
 				    String destity = txtDestination.getText();
-				    toShow2 = agency.findBestWay(origin, destity);
+				    toShow2 = agency.findBestWayReturn(destity, origin);
 				    
 				    
 				    
@@ -157,16 +159,17 @@ public class MainGUI {
 	  
 	 
     }
-    	String finalToShow = toShow1 + " " + toShow2;
+    	int toShow = toShow1 + toShow2;
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("results.fxml"));
-		fxmlLoader.setController(this);
-		Parent root = fxmlLoader.load();
-		Scene scene = new Scene(root);
-    	Stage stage = new Stage();
-    	stage.initModality(Modality.WINDOW_MODAL);
-    	stage.initOwner(mainPane.getScene().getWindow());
-    	stage.setScene(scene);
-    	stage.show();
+			fxmlLoader.setController(this);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+	    	Stage stage = new Stage();
+	    	stage.initModality(Modality.WINDOW_MODAL);
+	    	stage.initOwner(mainPane.getScene().getWindow());
+	    	stage.setScene(scene);
+	    	stage.show();
+	    	String finalToShow = "El mejor precio para ir y volver desde " + txtOrigin.getText() + " a " + txtDestination.getText() + " es de: " + toShow;   
     	txtResult.setText(finalToShow);
     	
     }

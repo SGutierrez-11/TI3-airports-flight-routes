@@ -139,7 +139,7 @@ public class WeightedGraph<T> {
 						
 						}
 					}
-					 //System.out.print(matrix[i][j] + " ");	
+					//System.out.print(matrix[i][j] + " ");	
 				}
 				//System.out.println();
 			}	
@@ -151,6 +151,9 @@ public class WeightedGraph<T> {
 					
 					for(int j=0; j < vertex;j++) {
 						
+					if(minDistances[i][k]==Integer.MAX_VALUE||minDistances[k][j]==Integer.MAX_VALUE) {
+						
+					}else {
 						if(minDistances[i][j]>(minDistances[i][k]+minDistances[k][j])) {
 							
 							minDistances[i][j] = (minDistances[i][k]+minDistances[k][j]);
@@ -158,7 +161,7 @@ public class WeightedGraph<T> {
 						
 					}
 				}
-				
+				}
 				
 			}	
 				

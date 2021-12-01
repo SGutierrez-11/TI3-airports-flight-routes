@@ -32,7 +32,10 @@ public class Agency {
 
 	public void importData(String localPath)throws IOException {
 		
+		System.out.println(localPath);
+		
 		BufferedReader br = new BufferedReader(new FileReader(localPath));
+		
 		
 		String line = br.readLine();
 		
@@ -51,21 +54,35 @@ public class Agency {
 			
 		}
 		
-		
+		System.out.println("Antes del While");
+		//line = br.readLine();
 		while(line!=null) {
+			
 			
 			String[] tmpText = line.split(" ");
 			
 			travel.addEdge( travel.getVertexPos(tmpText[0]),travel.getVertexPos(tmpText[1]), Integer.parseInt(tmpText[2]), false);
+			System.out.println("Pasa del add edge/itera");
+			line = br.readLine();
 		}
 		br.close();
-		
+		System.out.println("Termina el import");
 	}
 	
-	public String findBestWay(String origin, String destiny) {
-	
+	public String findBestWay(String origin, String destiny) {		
 		
 		int[][] minimunDistances = travel.minimunDistancesList();
+		
+		for(int i=0; i < cityOrder.length;i++) {
+			
+			for(int j=0; j< cityOrder.length;j++) {
+				
+				System.out.print(minimunDistances[i][j] + " ");	
+				}
+			System.out.println();
+			}
+			
+			
 		
 		int x = 0;
 		
@@ -90,9 +107,54 @@ public class Agency {
 			}
 			
 		}
-		String text = "El Precio Minimo entre: " + origin + "-" + destiny + " Con Origen en " + origin + " Y Destino en " + destiny + " Es" + minimunDistances[x][y];
+		String text = "El Precio Minimo entre: " + origin + "-" + destiny + " Con Origen en " + origin + " Y Destino en " + destiny + " Es " + minimunDistances[x][y];
 		return text;
 		
+	}
+	
+	public int findBestWayReturn(String origin, String destiny) {		
+		
+		int[][] minimunDistances = travel.minimunDistancesList();
+		
+		for(int i=0; i < cityOrder.length;i++) {
+			
+			for(int j=0; j< cityOrder.length;j++) {
+				
+				System.out.print(minimunDistances[i][j] + " ");	
+				}
+			System.out.println();
+			}
+			
+			
+		
+		int x = 0;
+		
+		int y=0;
+		for(int i=0;i < cityOrder.length;i++) {
+			
+			
+			if(cityOrder[i].equals(origin)) {
+				
+				x = i;
+				
+			}
+			
+		}
+		for(int i=0;i < cityOrder.length;i++) {
+			
+			
+			if(cityOrder[i].equals(destiny)) {
+				
+				y = i;
+				
+			}
+			
+		}
+		
+		
+		
+		
+		return minimunDistances[x][y];		
 	}
 	
 	
