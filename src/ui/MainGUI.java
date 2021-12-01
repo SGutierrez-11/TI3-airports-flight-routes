@@ -19,7 +19,7 @@ public class MainGUI {
     private TextArea txtResult;
     @FXML
     void backMain(ActionEvent event) {
-    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("area-main.fxml"));
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
     	fxmlLoader.setController(this);
 		Parent userView;
 		try {
