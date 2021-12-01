@@ -33,7 +33,7 @@ public class WeightedGraph<T> {
 			//adjacency = new ArrayList<Vertex<T>>();
 			
 		}
-		public void addVertex(T element) {
+		public void addVertex(T element) {  //Unit test 
 			
 			boolean out = false;
 			Vertex<T> tmp;
@@ -49,7 +49,7 @@ public class WeightedGraph<T> {
 			
 			
 		}
-		public void addEdge(int origin, int destination, int weight, boolean twoDirection) {
+		public void addEdge(int origin, int destination, int weight, boolean twoDirection) { //Unit test
 		
 			Vertex<T> originVertex = null;
 			
@@ -81,7 +81,7 @@ public class WeightedGraph<T> {
 			
 		}
 
-		public int[][] minimunDistancesList() {
+		public int[][] minimunDistancesList() { //Unit test
 			
 			int [][] matrix = new int[vertex][vertex];
 			
@@ -176,7 +176,7 @@ public class WeightedGraph<T> {
 		}
 
 
-		public void BFS(Vertex<T> element) {
+		public void BFS(Vertex<T> element) { 
 
 			for(int i=0; i < vertexList.length;i++){
 
@@ -208,6 +208,8 @@ public class WeightedGraph<T> {
 				}
 
 			}
+		
+		
 		public void DFS(){
 
 			for (Vertex<T> u:vertexList) {

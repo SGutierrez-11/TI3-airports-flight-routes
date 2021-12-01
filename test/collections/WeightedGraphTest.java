@@ -147,5 +147,25 @@ public class WeightedGraphTest {
 		
 	}
 	
+	@Test
+	public void BFStest1() {
+		setupStage2();
+	
+		
+		graph.addVertex(1);
+		graph.addVertex(2);
+		graph.addVertex(3);
+		graph.addVertex(4);
+		graph.addVertex(5);
+		graph.addEdge(1, 2, 2, true);
+		graph.addEdge(2, 3, 2, true);
+		graph.addEdge(3, 4, 2, true);
+		graph.addEdge(4, 5, 2, true);
+		
+		graph.BFS(graph.getVertexList()[0]);
+		
+		assertEquals(graph.getVertexList()[1].getColor(), "BLACK");
+	}
+	
 	
 }

@@ -31,7 +31,7 @@ public class Queue<T> implements InterfaceQueue<T>{
 		}else {
 			lastValue.setNext(newValue);
 		}
-		lastValue = newValue;
+		//lastValue = newValue;
 	}
 
 	@Override
