@@ -83,7 +83,7 @@ public class WeightedGraphTest {
 		
 		gp.addVertex(1);
 		gp.addVertex(2);
-		gp.addEdge(1, 2, 3, true);
+		gp.addEdge(gp.getVertexPos(1), gp.getVertexPos(2), 3, true);
 		
 		assertEquals(gp.getAdjancencyList().getObject().getWeight(), 3);
 		
@@ -115,10 +115,10 @@ public class WeightedGraphTest {
 		graph.addVertex(3);
 		graph.addVertex(4);
 		graph.addVertex(5);
-		graph.addEdge(1, 2, 4, true);
-		graph.addEdge(3, 4, 8, true);
-		graph.addEdge(4, 5, 3, true);
-		graph.addEdge(2, 4, 2, true);
+		graph.addEdge(graph.getVertexPos(1), graph.getVertexPos(2), 4, true);
+		graph.addEdge(graph.getVertexPos(3), graph.getVertexPos(4), 8, true);
+		graph.addEdge(graph.getVertexPos(4), graph.getVertexPos(5), 3, true);
+		graph.addEdge(graph.getVertexPos(2), graph.getVertexPos(4), 2, true);
 		
 		
 		assertEquals(graph.getAdjancencyList().getObject().getWeight(), 4);
@@ -137,12 +137,12 @@ public class WeightedGraphTest {
 		graph.addVertex(3);
 		
 		
-		graph.addEdge(1, 2, 4, false);
-		graph.addEdge(1, 3, 2, false);
-		graph.addEdge(2, 1, 5, false);
-		graph.addEdge(2, 3, 3, false);
-		graph.addEdge(3, 1, 6, false);
-		graph.addEdge(3, 2, 7, false);
+		graph.addEdge(graph.getVertexPos(1), graph.getVertexPos(2), 4, false);
+		graph.addEdge(graph.getVertexPos(1), graph.getVertexPos(3), 2, false);
+		graph.addEdge(graph.getVertexPos(2), graph.getVertexPos(1), 5, false);
+		graph.addEdge(graph.getVertexPos(2), graph.getVertexPos(3), 3, false);
+		graph.addEdge(graph.getVertexPos(3), graph.getVertexPos(1), 6, false);
+		graph.addEdge(graph.getVertexPos(3), graph.getVertexPos(2), 7, false);
 		
 		int[][] matrix = {{0,4,2},{5,0,3},{6,7,0}};
 		
@@ -160,10 +160,10 @@ public class WeightedGraphTest {
 		graph.addVertex(3);
 		graph.addVertex(4);
 		graph.addVertex(5);
-		graph.addEdge(1, 2, 2, true);
-		graph.addEdge(2, 3, 2, true);
-		graph.addEdge(3, 4, 2, true);
-		graph.addEdge(4, 5, 2, true);
+		graph.addEdge(graph.getVertexPos(1), graph.getVertexPos(2), 4, true);
+		graph.addEdge(graph.getVertexPos(3), graph.getVertexPos(4), 8, true);
+		graph.addEdge(graph.getVertexPos(4), graph.getVertexPos(5), 3, true);
+		graph.addEdge(graph.getVertexPos(2), graph.getVertexPos(4), 2, true);
 		
 		graph.BFS(graph.getVertexList()[1]);
 		
@@ -180,16 +180,16 @@ public class WeightedGraphTest {
 		graph.addVertex(3);
 		graph.addVertex(4);
 		graph.addVertex(5);
-		graph.addEdge(1, 2, 2, true);
-		graph.addEdge(2, 3, 2, true);
-		graph.addEdge(3, 4, 2, true);
-		graph.addEdge(4, 5, 2, true);
+		graph.addEdge(graph.getVertexPos(1), graph.getVertexPos(2), 4, true);
+		graph.addEdge(graph.getVertexPos(3), graph.getVertexPos(4), 8, true);
+		graph.addEdge(graph.getVertexPos(4), graph.getVertexPos(5), 3, true);
+		graph.addEdge(graph.getVertexPos(2), graph.getVertexPos(4), 2, true);
 		
 		graph.BFS(graph.getVertexList()[1]);
 		
 		assertEquals(graph.getVertexList()[3].getColor(), "BLACK");
 		assertEquals(graph.getVertexList()[1].getColor(), "BLACK");
-		assertEquals(graph.getVertexList()[2].getColor(), "BLACK");
+		assertEquals(graph.getVertexList()[2].getColor(), "WHITE");
 	}
 	
 	
