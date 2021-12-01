@@ -6,10 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Agency;
 public class Main extends Application{
 	private MainGUI gui;
+	private Agency agency;
 	public Main() {
-		gui = new MainGUI();
+		agency = new Agency();
+		gui = new MainGUI(agency);
 	}
 	public static void main(String[]args) {
 			launch(args);

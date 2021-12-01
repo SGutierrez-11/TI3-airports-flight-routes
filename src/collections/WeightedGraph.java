@@ -40,7 +40,7 @@ public class WeightedGraph<T> {
 			boolean out = false;
 			Vertex<T> tmp;
 			for(int i =0; i < vertexList.length && !out;i++) {
-			tmp = new Vertex<T>(element, i);	
+			tmp = new Vertex<T>(element, i,vertex);	
 				if(vertexList[i]==null) {
 					
 					vertexList[i] = tmp;
@@ -51,7 +51,29 @@ public class WeightedGraph<T> {
 			
 			
 		}
-		public void addEdge(int origin, int destination, int weight, boolean twoDirection) { //Unit test
+
+		
+
+		public int getVertexPos(T element) {
+			
+			int pos = 0;
+			boolean out = false;
+			for(int i=0; i < vertex && out==false;i++) {
+				
+				if(vertexList[i].getElement().equals(element)) {
+					
+					pos = i;
+					out = true;
+				}
+				
+				
+			}
+			return pos;
+			
+		}
+		
+		public void addEdge(int origin, int destination, int weight, boolean twoDirection) {
+
 		
 			Vertex<T> originVertex = null;
 			
@@ -78,6 +100,9 @@ public class WeightedGraph<T> {
 			Edge<T> tmpEdge = new Edge<T>(originVertex, destinationVertex, weight, twoDirection);
 			
 			LinkedListOwn<Edge<T>> next = new LinkedListOwn<Edge<T>>(tmpEdge);
+			
+			originVertex.addAdjVert(destinationVertex);
+			//destinationVertex.addAdjVert(originVertex);
 			
 			adjancencyList.setNext(next);
 			//adjacency.add(tmpEdge);
@@ -205,7 +230,7 @@ public class WeightedGraph<T> {
 
 				Vertex<T> u = queue.remove();
 
-				for (Vertex<T>v:vertexList) {
+				for (Vertex<T>v:u.getAdjan()) {
 					v.setColor("GRAY");
 					v.setDistance(u.getDistance()+1);
 					v.setPredescesor(u);

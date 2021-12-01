@@ -1,6 +1,6 @@
 package collections;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -123,7 +123,6 @@ public class WeightedGraphTest {
 		
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void minimunDistancesTest1() {
 		setupStage3();
@@ -162,9 +161,13 @@ public class WeightedGraphTest {
 		graph.addEdge(3, 4, 2, true);
 		graph.addEdge(4, 5, 2, true);
 		
-		graph.BFS(graph.getVertexList()[0]);
+		graph.BFS(graph.getVertexList()[1]);
 		
 		assertEquals(graph.getVertexList()[1].getColor(), "BLACK");
+	}
+	
+	@Test
+	public void DijkstraTest1() {
 	}
 	
 	
