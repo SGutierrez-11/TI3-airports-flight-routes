@@ -72,7 +72,7 @@ public class WeightedGraph<T> {
 			
 		}
 		
-		public void addEdge(int origin, int destination, int weight, boolean twoDirection) {
+		public void addEdge(T origin, T destination, int weight, boolean twoDirection) {
 
 		
 			Vertex<T> originVertex = null;
@@ -81,20 +81,22 @@ public class WeightedGraph<T> {
 			
 			for(int i=0; i < vertexList.length;i++) {
 				
-				if(vertexList[i].getIdentificator()==origin) {
+				if(vertexList[i].getElement()==origin) {
 					
 					originVertex = vertexList[i];
+					//System.out.println(originVertex.getIdentificator());
 					
 				}
-				if(vertexList[i].getIdentificator()==destination) {
+				if(vertexList[i].getElement()==destination) {
 					
 					destinationVertex = vertexList[i];
-					
+					//System.out.println(destinationVertex.getIdentificator());
 				}
 				
 				
 			}
 			if(originVertex==null||destinationVertex==null) {
+				System.out.println("Esta entrando aqui ");
 				
 			}else {
 			Edge<T> tmpEdge = new Edge<T>(originVertex, destinationVertex, weight, twoDirection);
@@ -104,12 +106,15 @@ public class WeightedGraph<T> {
 			originVertex.addAdjVert(destinationVertex);
 			//destinationVertex.addAdjVert(originVertex);
 			
+			if(adjancencyList.getObject()==null) {
+				adjancencyList =next;
+			}else {
 			adjancencyList.setNext(next);
 			//adjacency.add(tmpEdge);
 			}
 			
+			}
 		}
-
 		public int[][] minimunDistancesList() { //Unit test
 			
 			int [][] matrix = new int[vertex][vertex];
@@ -122,10 +127,17 @@ public class WeightedGraph<T> {
 			
 			while(tmp!=null) {
 				
+				
+				
+				
 				matrix[tmp.getObject().source.getIdentificator()][tmp.getObject().destination.getIdentificator()] = tmp.getObject().weight;
+				//System.out.println(tmp.getObject().source.getIdentificator() + " " + tmp.getObject().destination.getIdentificator() + " " + tmp.getObject().weight);
+					
 				if(tmp.getObject().doubleDirected==true) {
 					
+					
 					matrix[tmp.getObject().destination.getIdentificator()][tmp.getObject().source.getIdentificator()] = tmp.getObject().weight;
+					
 				}
 				tmp = tmp.getNext();
 			}
@@ -143,7 +155,9 @@ public class WeightedGraph<T> {
 						
 						}
 					}
+					 //System.out.print(matrix[i][j] + " ");	
 				}
+				//System.out.println();
 			}	
 			minDistances = matrix;
 			for(int k=0; k < vertex;k++) {

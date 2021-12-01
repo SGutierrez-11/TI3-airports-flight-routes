@@ -56,7 +56,7 @@ public class Agency {
 			
 			String[] tmpText = line.split(" ");
 			
-			travel.addEdge( travel.getVertexPos(tmpText[0]) , travel.getVertexPos(tmpText[1]), Integer.parseInt(tmpText[2]), false);
+			//travel.addEdge( travel.getVertexPos(tmpText[0]) , travel.getVertexPos(tmpText[1]), Integer.parseInt(tmpText[2]), false);
 		}
 		br.close();
 		

@@ -21,6 +21,7 @@ public class Main {
 		graph.addVertex(3);
 
 
+
 		graph.addEdge(1, 2, 4, true);
 		graph.addEdge(1, 3, 2, true);
 		graph.addEdge(2, 1, 5, true);
@@ -29,13 +30,27 @@ public class Main {
 		graph.addEdge(3, 2, 7, true);
 		
 
+		graph.addEdge(1, 2, 4, false);
+		graph.addEdge(1, 3, 2, false);
+		graph.addEdge(2, 1, 5, false);
+		graph.addEdge(2, 3, 3, false);
+		graph.addEdge(3, 1, 6, false);
+		graph.addEdge(3, 2, 7, false);
+
+
+		
 		int[][] matrix=graph.minimunDistancesList();
+		
 		for(int i=0; i<3;i++) {
 			for(int j=0;j<3;j++) {
 
 				System.out.print("["+matrix[i][j]+"]");
 			}
+			System.out.println();
 		}
+		
+		
+		
 	}
 }
 
