@@ -35,12 +35,12 @@ public class WeightedGraph<T> {
 			//adjacency = new ArrayList<Vertex<T>>();
 			
 		}
-		public void addVertex(T element) {
+		public void addVertex(T element) {  //Unit test 
 			
 			boolean out = false;
 			Vertex<T> tmp;
 			for(int i =0; i < vertexList.length && !out;i++) {
-			tmp = new Vertex<T>(element, i);	
+			tmp = new Vertex<T>(element, i,vertex);	
 				if(vertexList[i]==null) {
 					
 					vertexList[i] = tmp;
@@ -51,6 +51,9 @@ public class WeightedGraph<T> {
 			
 			
 		}
+
+		
+
 		public int getVertexPos(T element) {
 			
 			int pos = 0;
@@ -70,40 +73,33 @@ public class WeightedGraph<T> {
 		}
 		
 		public void addEdge(int origin, int destination, int weight, boolean twoDirection) {
+
 		
-			Vertex<T> originVertex = null;
+			Vertex<T> originVertex = vertexList[origin];
 			
-			Vertex<T> destinationVertex = null;
+			Vertex<T> destinationVertex = vertexList[destination];
 			
-			for(int i=0; i < vertexList.length;i++) {
-				
-				if(vertexList[i].getIdentificator()==origin) {
-					
-					originVertex = vertexList[i];
-					
-				}
-				if(vertexList[i].getIdentificator()==destination) {
-					
-					destinationVertex = vertexList[i];
-					
-				}
-				
-				
-			}
 			if(originVertex==null||destinationVertex==null) {
+				System.out.println("Esta entrando aqui ");
 				
 			}else {
 			Edge<T> tmpEdge = new Edge<T>(originVertex, destinationVertex, weight, twoDirection);
 			
 			LinkedListOwn<Edge<T>> next = new LinkedListOwn<Edge<T>>(tmpEdge);
 			
+			originVertex.addAdjVert(destinationVertex);
+			//destinationVertex.addAdjVert(originVertex);
+			
+			if(adjancencyList.getObject()==null) {
+				adjancencyList =next;
+			}else {
 			adjancencyList.setNext(next);
 			//adjacency.add(tmpEdge);
 			}
 			
+			}
 		}
-
-		public int[][] minimunDistancesList() {
+		public int[][] minimunDistancesList() { //Unit test
 			
 			int [][] matrix = new int[vertex][vertex];
 			
@@ -115,10 +111,17 @@ public class WeightedGraph<T> {
 			
 			while(tmp!=null) {
 				
+				
+				
+				
 				matrix[tmp.getObject().source.getIdentificator()][tmp.getObject().destination.getIdentificator()] = tmp.getObject().weight;
+				//System.out.println(tmp.getObject().source.getIdentificator() + " " + tmp.getObject().destination.getIdentificator() + " " + tmp.getObject().weight);
+					
 				if(tmp.getObject().doubleDirected==true) {
 					
+					
 					matrix[tmp.getObject().destination.getIdentificator()][tmp.getObject().source.getIdentificator()] = tmp.getObject().weight;
+					
 				}
 				tmp = tmp.getNext();
 			}
@@ -136,7 +139,9 @@ public class WeightedGraph<T> {
 						
 						}
 					}
+					 //System.out.print(matrix[i][j] + " ");	
 				}
+				//System.out.println();
 			}	
 			minDistances = matrix;
 			for(int k=0; k < vertex;k++) {
@@ -199,7 +204,7 @@ public class WeightedGraph<T> {
 		}
 
 
-		public void BFS(Vertex<T> element) {
+		public void BFS(Vertex<T> element) { 
 
 			for(int i=0; i < vertexList.length;i++){
 
@@ -223,7 +228,7 @@ public class WeightedGraph<T> {
 
 				Vertex<T> u = queue.remove();
 
-				for (Vertex<T>v:vertexList) {
+				for (Vertex<T>v:u.getAdjan()) {
 					v.setColor("GRAY");
 					v.setDistance(u.getDistance()+1);
 					v.setPredescesor(u);
@@ -234,6 +239,8 @@ public class WeightedGraph<T> {
 				}
 
 			}
+		
+		
 		public void DFS(){
 
 			for (Vertex<T> u:vertexList) {
