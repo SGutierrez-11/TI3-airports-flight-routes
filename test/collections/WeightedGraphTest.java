@@ -142,6 +142,8 @@ public class WeightedGraphTest {
 		
 		int[][] matrix = {{-10,2147483637,2147483631},{2147483637,-12,-18},{2147483631,-18,-24}};
 		
+		
+		
 		assertEquals(graph.minimunDistancesList(), matrix);
 		
 	}
