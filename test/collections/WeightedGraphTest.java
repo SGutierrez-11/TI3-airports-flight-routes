@@ -116,11 +116,14 @@ public class WeightedGraphTest {
 		graph.addVertex(5);
 		graph.addEdge(1, 2, 4, true);
 		graph.addEdge(3, 4, 8, true);
+		graph.addEdge(4, 5, 3, true);
+		graph.addEdge(2, 4, 2, true);
 		
 		
 		assertEquals(graph.getAdjancencyList().getObject().getWeight(), 4);
-		assertEquals(graph.getAdjancencyList().getNext().getObject().getWeight(), 8);
-		
+		assertEquals(graph.getAdjancencyList().getNext().getObject().getWeight(), 2);
+		assertEquals(graph.getAdjancencyList().getNext().getNext().getObject().getWeight(), 3);
+		assertEquals(graph.getAdjancencyList().getNext().getNext().getNext().getObject().getWeight(),2);
 	}
 	
 	@Test
@@ -133,14 +136,14 @@ public class WeightedGraphTest {
 		graph.addVertex(3);
 		
 		
-		graph.addEdge(1, 2, 4, true);
-		graph.addEdge(1, 3, 2, true);
-		graph.addEdge(2, 1, 5, true);
-		graph.addEdge(2, 3, 3, true);
-		graph.addEdge(3, 1, 6, true);
-		graph.addEdge(3, 2, 7, true);
+		graph.addEdge(1, 2, 4, false);
+		graph.addEdge(1, 3, 2, false);
+		graph.addEdge(2, 1, 5, false);
+		graph.addEdge(2, 3, 3, false);
+		graph.addEdge(3, 1, 6, false);
+		graph.addEdge(3, 2, 7, false);
 		
-		int[][] matrix = {{-10,2147483637,2147483631},{2147483637,-12,-18},{2147483631,-18,-24}};
+		int[][] matrix = {{0,4,2},{5,0,3},{6,7,0}};
 		
 		
 		
@@ -166,10 +169,6 @@ public class WeightedGraphTest {
 		graph.BFS(graph.getVertexList()[1]);
 		
 		assertEquals(graph.getVertexList()[1].getColor(), "BLACK");
-	}
-	
-	@Test
-	public void DijkstraTest1() {
 	}
 	
 	

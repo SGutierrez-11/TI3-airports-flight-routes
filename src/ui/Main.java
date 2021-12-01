@@ -27,6 +27,7 @@ public class Main {
 		graph.addEdge(2, 3, 3, true);
 		graph.addEdge(3, 1, 6, true);
 		graph.addEdge(3, 2, 7, true);
+		
 
 		int[][] matrix=graph.minimunDistancesList();
 		for(int i=0; i<3;i++) {
