@@ -72,29 +72,13 @@ public class WeightedGraph<T> {
 			
 		}
 		
-		public void addEdge(T origin, T destination, int weight, boolean twoDirection) {
+		public void addEdge(int origin, int destination, int weight, boolean twoDirection) {
 
 		
-			Vertex<T> originVertex = null;
+			Vertex<T> originVertex = vertexList[origin];
 			
-			Vertex<T> destinationVertex = null;
+			Vertex<T> destinationVertex = vertexList[destination];
 			
-			for(int i=0; i < vertexList.length;i++) {
-				
-				if(vertexList[i].getElement()==origin) {
-					
-					originVertex = vertexList[i];
-					//System.out.println(originVertex.getIdentificator());
-					
-				}
-				if(vertexList[i].getElement()==destination) {
-					
-					destinationVertex = vertexList[i];
-					//System.out.println(destinationVertex.getIdentificator());
-				}
-				
-				
-			}
 			if(originVertex==null||destinationVertex==null) {
 				System.out.println("Esta entrando aqui ");
 				
