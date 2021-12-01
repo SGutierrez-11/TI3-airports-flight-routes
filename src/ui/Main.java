@@ -1,5 +1,4 @@
 package ui;
-import collections.WeightedGraph;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,7 +9,7 @@ import javafx.stage.Stage;
 import model.Agency;
 
 
-public class Main {
+/*public class Main {
 	private static WeightedGraph<Integer> graph;
 
 	public static void main(String[] args) {
@@ -42,10 +41,10 @@ public class Main {
 		
 		
 	}
-}
+}*/
 
 
-/*public class Main extends Application{
+public class Main extends Application{
 	private MainGUI gui;
 	private Agency agency;
 	public Main() {
@@ -71,4 +70,4 @@ public class Main {
             System.exit(0);
         });
 	}
-}*/
+}

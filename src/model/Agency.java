@@ -38,7 +38,7 @@ public class Agency {
 		
 		String[] cities = line.split(" ");
 		
-		cities = cityOrder;
+		cityOrder = cities;
 		
 		WeightedGraph<String> tmp = new WeightedGraph<String>(cities.length);
 		
